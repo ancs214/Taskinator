@@ -20,25 +20,27 @@
 
 
 //declaring DOM object references
-let buttonEl = document.querySelector('#save-task');
+let formEl = document.querySelector('#task-form');
 let tasksToDoEl = document.querySelector('#tasks-to-do');
 
 
-let  createTaskHandler = function() {
-//declare DOM var for creating a <li> element
-let listItemEl = document.createElement('li');
-//make styling the same as other li elements
-listItemEl.className = 'task-item';
-//use DOM property textContent to insert text into li element
-listItemEl.textContent = 'This is a new task.';
-//use DOM property appendChild to append the child of tasks-to-do 
-tasksToDoEl.appendChild(listItemEl);
+let createTaskHandler = function (event) {
+    //prevent browser's old habits of reloading page after form submit
+    event.preventDefault();
+    //declare DOM var for creating a <li> element
+    let listItemEl = document.createElement('li');
+    //make styling the same as other li elements
+    listItemEl.className = 'task-item';
+    //use DOM property textContent to insert text into li element
+    listItemEl.textContent = 'This is a new task.';
+    //use DOM property appendChild to append the child of tasks-to-do 
+    tasksToDoEl.appendChild(listItemEl);
 };
 
 
 // EVENT LISTENER has two arguments passed into it: type of event and event response to execute
 //addEventListener to button: when we click, a function will run
-buttonEl.addEventListener('click', createTaskHandler);
+formEl.addEventListener('submit', createTaskHandler);
 
 
 
