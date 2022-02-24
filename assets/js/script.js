@@ -32,6 +32,14 @@ let taskFormHandler = function (event) {
     //create var and select for element <select> name attribute
     let taskTypeInput = document.querySelector("select[name='task-type']").value;
 
+    //form input validation; check for empty strings
+    if (!taskNameInput || !taskTypeInput) {
+        alert("You need to fill out the task form!");
+        return false;
+    }
+    //will reset form after submission. **METHOD ONLY WORKS ON FORM ELEMENTS!!**
+    formEl.reset();
+
     //package up data as an object
     let taskDataObj = {
         name: taskNameInput,
